@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>order</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+</head>
+
+<body>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="#">
+								<img src="{% static 'assets/img/logo.png' %}" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li ><a href="index1.html">Home</a>
+								</li>
+								<li><a href="about1.html">About</a></li>
+								<li><a href="contact1.html">Contact</a></li>
+								<li><a href="shop1.html">Shop</a>
+									<ul class="sub-menu">
+										<li><a href="shop.html">Shop</a></li>
+										<li><a href="checkout1.html">Check Out</a></li>
+										<li><a href="cart1.html">Cart</a></li>
+									</ul>
+								</li>
+
+								<li>
+									<div class="header-icons">
+
+										<i class='far fa-user-circle' style='font-size:24px;color:white'></i>
+										<ul class="sub-menu">
+											<li><a href="change">Change password</a></li>
+											<li><a class="shopping-cart" href="order1.html"> My order</a></li>
+											<li><a href="logout">Logout</a></li>
+									</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search arewa -->
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>MY</p>
+						<h1>ORDERS</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- cart -->
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table" >
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-name" >Order</th>
+									<th class="product-name" >Date</th>
+									<th class="product-name" >Amount</th>
+									<th class="product-name" >Satus</th>
+
+
+
+
+
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr class="table-body-row" bgcolor="" >
+									{% for i in r %}
+									<form  method="post" action="reject">
+
+								{% csrf_token %}
+									<input type="hidden" value="{{i.name}}" name="n1">
+									<input type="hidden" value="{{i.phone}}" name="n2">
+									<input type="hidden" value="{{i.amount}}" name="n3">
+
+									<td class="product-image" style="width:25%;">
+										<ul class="nav">
+											{% if i.q1 != 0 %}
+											<li class="nav-item"><img src="{% static 'assets/img/products/product-img-1.jpg' %}" alt="">x{{i.q1}}</li>
+											{% endif %}
+											{% if i.q2 != 0 %}
+									<li class="nav-item" ><img src="{% static 'assets/img/products/product-img-2.jpg' %}" alt="">x{{i.q2}}</li>
+									{% endif %}
+											{% if i.q3 != 0 %}
+									<li class="nav-item"><img src="{% static 'assets/img/products/product-img-3.jpg' %}" alt="">x{{i.q3}}</li>
+									{% endif %}
+									{% if i.q4 != 0 %}
+									<li class="nav-item" ><img src="{% static 'assets/img/products/product-img-4.jpg' %}" alt="">x{{i.q4}}</li>
+									{% endif %}
+
+										</ul>
+										</td>
+									<td>{{i.datee}}</td>
+									<td>Rs.{{i.amount}}</td>
+
+
+
+									{% if i.action == 'pending' %}
+									<td ><h4 style="color:orange;">{{i.action}}</h4><button class="btn btn-danger" type="submit" name="action" value="cancel" onclick="return confirm('Are you sure of canceling order?')">Cancel order</button></td>
+
+
+									{% elif i.action == 'delivered' %}
+									<td ><h4 style="color:green;" >{{i.action}}</h4></td>
+									{% elif i.action == 'canceled' %}
+									<td ><h4 style="color:red;" >{{i.action}}</h4></td>
+									{% endif %}
+									</form>
+
+
+
+
+
+
+
+								</tr>
+
+
+							</tbody>
+							{% endfor %}
+
+						</table>
+
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- end cart -->
+
+	<!-- logo carousel -->
+
+	<!-- end logo carousel -->
+
+	<!-- footer -->
+
+	<!-- end footer -->
+	
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- end copyright -->
+	
+	<!-- jquery -->
+	<script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'assets/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'assets/js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
